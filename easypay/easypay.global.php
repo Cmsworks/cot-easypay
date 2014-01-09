@@ -20,7 +20,15 @@ foreach($easypay_cfg as $code => $opt)
 		{
 			if (cot_payments_updatestatus($pay['pay_id'], 'done'))
 			{
-				$customer = $db->query("SELECT * FROM $db_users WHERE user_id=".$pay['pay_userid'])->fetch();
+				if($pay['pay_userid'] > 0)
+				{
+					$customer = $db->query("SELECT * FROM $db_users WHERE user_id=".$pay['pay_userid'])->fetch();
+				}
+				else
+				{
+					$customer['user_name'] = $pay['pay_email'];
+					$customer['user_email'] = $pay['pay_email'];
+				}
 				
 				// отправляем админу детали операции на email
 				$subject = $L['easypay_email_paid_admin_subject'];

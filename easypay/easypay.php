@@ -36,7 +36,8 @@ if ($a == 'buy')
 		if($easypay_cfg[$code]['cost'] > 0 && $easypay_cfg[$code]['cost'] != $cost) $cost = $easypay_cfg[$code]['cost'];
 		
 		$options['desc'] = ($usr['id'] == 0) ? $easypay_cfg[$code]['name'].' ('.$email.')' : $easypay_cfg[$code]['name'];
-
+		$options['email'] = (!empty($email)) ? $email : '';
+		
 		cot_payments_create_order('easypay.'.$code, $cost, $options);
 	}
 }

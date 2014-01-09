@@ -5,7 +5,7 @@
  * Name=Easy Pay
  * Category=Payments
  * Description=Простые платежки
- * Version=1.0.0
+ * Version=1.0.1
  * Date=
  * Author=CMSWorks Team
  * Copyright=Copyright (c) CMSWorks.ru
@@ -27,7 +27,7 @@
  * easypay plugin
  *
  * @package easypay
- * @version 1.0.0
+ * @version 1.0.1
  * @author CMSWorks Team
  * @copyright Copyright (c) CMSWorks.ru
  * @license BSD

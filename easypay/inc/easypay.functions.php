@@ -32,11 +32,13 @@ function cot_cfg_easypay()
 		$lines[0] = trim($lines[0]);
 		$lines[1] = trim($lines[1]);
 		$lines[2] = (float)trim($lines[2]);
+		$lines[3] = (int)trim($lines[3]);
 		
 		if (!empty($lines[0]) && !empty($lines[1]))
 		{
 			$easypayset[$lines[0]]['name'] = $lines[1];
 			$easypayset[$lines[0]]['cost'] = $lines[2];
+			$easypayset[$lines[0]]['userid'] = $lines[3];
 
 		}
 	}

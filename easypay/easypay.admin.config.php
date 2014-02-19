@@ -26,6 +26,7 @@ if ($p == 'easypay' && $row['config_name'] == 'codes' && $cfg['jquery'])
 		$lines[0] = trim($lines[0]);
 		$lines[1] = trim($lines[1]);
 		$lines[2] = (float)trim($lines[2]);
+		$lines[3] = (trim($lines[3])) ? (int)trim($lines[3]) : 0;
 		
 		if (!empty($lines[0]) && !empty($lines[1]))
 		{
@@ -34,6 +35,7 @@ if ($p == 'easypay' && $row['config_name'] == 'codes' && $cfg['jquery'])
 				'ADDCODE' => cot_inputbox('text', 'code', $lines[0], 'class="code_id"'),
 				'ADDNAME' => cot_inputbox('text', 'name', $lines[1], 'class="code_name"'),
 				'ADDCOST' => cot_inputbox('text', 'cost', $lines[2], 'class="code_cost"'),
+				'ADDUSERID' => cot_inputbox('text', 'userid', $lines[3], 'class="code_userid"'),
 			));
 			$tt->parse('MAIN.ADDITIONAL');
 			$jj++;

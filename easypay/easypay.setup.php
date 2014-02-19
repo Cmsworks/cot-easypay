@@ -19,7 +19,7 @@
  * [END_COT_EXT]
  * 
  * [BEGIN_COT_EXT_CONFIG]
- * codes=01:textarea::donation|Пожертвование|0:Format settings code|name|cost
+ * codes=01:textarea::donation|Пожертвование|0|0:Format settings code|name|cost|userid
  * [END_COT_EXT_CONFIG]
  */
 

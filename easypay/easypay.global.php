@@ -30,6 +30,27 @@ foreach($easypay_cfg as $code => $opt)
 					$customer['user_email'] = $pay['pay_email'];
 				}
 				
+				if($opt['userid'] > 0)
+				{
+					$payinfo['pay_userid'] = $opt['userid'];
+					$payinfo['pay_area'] = 'balance';
+					$payinfo['pay_code'] = 'easypay:'.$code;
+					$payinfo['pay_summ'] = $pay['pay_summ'];
+					$payinfo['pay_cdate'] = $sys['now'];
+					$payinfo['pay_pdate'] = $sys['now'];
+					$payinfo['pay_adate'] = $sys['now'];
+					$payinfo['pay_status'] = 'done';
+					$payinfo['pay_desc'] = $pay['pay_desc'].' ('.$customer['user_name'].')';
+
+					$db->insert($db_payments, $payinfo);
+					
+					// отправляем получателю детали операции на email
+					$user = $db->query("SELECT * FROM $db_users WHERE user_id=".$opt['userid'])->fetch();
+					$subject = $L['easypay_email_paid_user_subject'];
+					$body = sprintf($L['easypay_email_paid_user_body'], $customer['user_name'], $pay['pay_desc'], $pay['pay_summ'].' '.$cfg['payments']['valuta'], $pay['pay_id'], cot_date('d.m.Y в H:i', $pay['pay_pdate']));
+					cot_mail($user['user_email'], $subject, $body);
+				}
+				
 				// отправляем админу детали операции на email
 				$subject = $L['easypay_email_paid_admin_subject'];
 				$body = sprintf($L['easypay_email_paid_admin_body'], $customer['user_name'], $pay['pay_desc'], $pay['pay_summ'].' '.$cfg['payments']['valuta'], $pay['pay_id'], cot_date('d.m.Y в H:i', $pay['pay_pdate']));

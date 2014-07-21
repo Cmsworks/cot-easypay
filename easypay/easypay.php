@@ -8,6 +8,7 @@
 
 defined('COT_CODE') && defined('COT_PLUG') or die('Wrong URL');
 
+require_once cot_incfile('forms');
 require_once cot_incfile('easypay', 'plug');
 
 $code = cot_import('code', 'G', 'ALP');
